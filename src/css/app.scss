@@ -1,4 +1,12 @@
 // app global css in SCSS form
 body {
-  background-color: #f7f7f7;
+  background-color: white;
+}
+.btn-primary {
+  width: 288px;
+  height: 40px;
+  background: linear-gradient(180deg, #5cc4ff -13.68%, #1084fa 109.7%);
+  box-shadow: 0px 5px 33px rgba(16, 132, 250, 0.4);
+  border-radius: 14px;
+  color: white;
 }

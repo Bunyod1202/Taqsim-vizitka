@@ -1,23 +1,25 @@
 <template>
-  <div class="navbar">
-    <div class="logo">
-      <a href="/"> <img src="/images/Logo.png" alt="" /></a>
+  <div class="header-top">
+    <div class="navbar">
+      <div class="logo">
+        <a href="/"> <img src="/images/Logo.png" alt="" /></a>
 
-      <q-tabs
-        class="nav"
-        v-model="one"
-        indicator-color="transparent"
-        active-color="black"
-      >
-        <q-tab class="nav-item" to="/" label="Как это работает" name="one" />
-        <q-tab class="nav-item" to="/" label="Магазины" name="two" />
-        <q-tab class="nav-item" to="/" label="Новости" name="three" />
-        <q-tab class="nav-item" to="/" label="FAQ" name="four" />
-      </q-tabs>
-    </div>
-    <div class="btn-group">
-      <q-btn class="phone-number" flat>998 (90) 951-91-29</q-btn>
-      <LangSwitcher />
+        <q-tabs
+          class="nav"
+          v-model="one"
+          indicator-color="transparent"
+          active-color="black"
+        >
+          <q-tab class="nav-item" to="/" label="Как это работает" name="one" />
+          <q-tab class="nav-item" to="/" label="Магазины" name="two" />
+          <q-tab class="nav-item" to="/" label="Новости" name="three" />
+          <q-tab class="nav-item" to="/" label="FAQ" name="four" />
+        </q-tabs>
+      </div>
+      <div class="btn-group">
+        <q-btn class="phone-number" flat>998 (90) 951-91-29</q-btn>
+        <LangSwitcher />
+      </div>
     </div>
   </div>
 </template>
@@ -40,10 +42,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.header-top {
+  padding: 34px 0;
+  background-color: #f7f7f7;
+}
 .navbar {
   padding: 0 40px;
   margin: 0 auto;
-  margin-top: 34px;
+
   align-items: center;
   justify-content: space-between;
   display: flex;

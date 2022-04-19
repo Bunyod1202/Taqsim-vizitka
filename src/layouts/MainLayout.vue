@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout class="page" view="hHh lpR fFf">
     <HeaderTop />
     <HeaderBottom />
     <q-page-container>
@@ -24,3 +24,4 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss" scoped></style>

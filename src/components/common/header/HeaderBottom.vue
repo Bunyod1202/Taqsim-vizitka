@@ -25,12 +25,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header-bottom {
+  background-color: #f7f7f7;
+}
 .navbar {
   padding: 4px;
   width: 470px;
   height: 50px;
   margin: 0 auto;
-  margin-top: 34px;
   border: 0.5px solid #e0e0e0;
   background-color: #fff;
   box-sizing: border-box;
