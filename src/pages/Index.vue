@@ -47,10 +47,57 @@
             Республике
           </div>
           <Carousel :itemsToShow="4" :wrapAround="true">
-            <Slide v-for="slide in 5" :key="slide">
+            <Slide v-for="item in slides" :key="item">
               <div class="carousel__item">
                 <div class="card">
-                  {{ slide }}
+                  <div class="model">
+                    <div class="logo">
+                      <img src="/images/brend/image 3.png" alt="" />
+                    </div>
+                    <div class="name">Mediapark</div>
+                    <div class="madel">Электроника</div>
+                    <div class="step">
+                      <q-rating
+                        v-model="ratingModel"
+                        size="2em"
+                        max="5"
+                        color="yellow-5"
+                        icon="star_border"
+                        icon-selected="star"
+                      />
+                      <span>{{ ratingModel }}/5</span>
+                    </div>
+                    <div class="link">
+                      <q-btn
+                        class="btn"
+                        icon-right="navigate_next"
+                        flat
+                        label="Перейти на сайт"
+                        no-caps
+                      />
+                    </div>
+                  </div>
+                  <div class="img">
+                    <img src="/images/brend/image 54.png" alt="" />
+                  </div>
+                  <div class="images">
+                    <div class="col">
+                      <div class="img1">
+                        <img src="/images/brend/image 54 (1).png" alt="" />
+                      </div>
+                      <div class="img1">
+                        <img src="/images/brend/image 54 (2).png" alt="" />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="img1">
+                        <img src="/images/brend/image 54 (3).png" alt="" />
+                      </div>
+                      <div class="img1">
+                        <img src="/images/brend/image 54 (4).png" alt="" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Slide>
@@ -61,19 +108,40 @@
           </Carousel>
         </div>
       </div>
+      <div class="row color">
+        <div class="bordr1"></div>
+      </div>
+      <div class="row">
+        <Carousels />
+      </div>
+      <div class="row">
+        <SwiperCarousel />
+      </div>
+      <div class="row"></div>
     </div>
   </div>
 </template>
 
 <script>
-import { defineAsyncComponent, defineComponent } from "vue";
+import { defineAsyncComponent, defineComponent, ref } from "vue";
 import { Carousel, Slide, Navigation, Pagination } from "vue3-carousel";
+import Carousels from "src/components/Carousels.vue";
+import SwiperCarousel from "src/components/UI/SwiperCarousel.vue";
 import Steps from "src/components/Steps.vue";
 import "vue3-carousel/dist/carousel.css";
 export default defineComponent({
   name: "PageIndex",
-  components: { Carousel, Slide, Steps, Navigation, Pagination },
+  components: {
+    Carousel,
+    Slide,
+    Steps,
+    Navigation,
+    Pagination,
+    Carousels,
+    SwiperCarousel,
+  },
   setup() {
+    const ratingModel = ref(4);
     const slide = [
       {
         src: "/images/cards/1 7 1.png",
@@ -140,11 +208,13 @@ export default defineComponent({
         class: "a15",
       },
     ];
-
+    const slides = [{ s: "s" }, { s: "s" }, { s: "s" }, { s: "s" }, { s: "s" }];
     return {
       Carousel,
       Slide,
       slide,
+      slides,
+      ratingModel,
     };
   },
 });
@@ -319,7 +389,7 @@ export default defineComponent({
     }
     .carousel {
       margin: 0 auto;
-      margin-bottom: 92px;
+
       .text {
         a {
           text-decoration: none;
@@ -361,6 +431,70 @@ export default defineComponent({
             background: #f7f7f7;
             box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            display: flex;
+
+            .img {
+              width: 261px;
+              height: 261px;
+              background: #ffffff;
+              border: 0.5px solid #f2f2f2;
+              box-sizing: border-box;
+              border-radius: 10px;
+            }
+            .images {
+              .col {
+                margin-bottom: 12px;
+                display: flex;
+                .img1 {
+                  width: 144px;
+                  height: 120px;
+                  background: #ffffff;
+                  margin-left: 12px;
+                  border: 0.5px solid #f2f2f2;
+                  box-sizing: border-box;
+                  border-radius: 10px;
+                }
+              }
+            }
+            .model {
+              text-align: left;
+              .logo {
+                width: 74px;
+                height: 74px;
+                border-radius: 10px;
+                background-color: #fff;
+              }
+              .name {
+                margin-top: 10px;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 29px;
+                color: #000;
+              }
+              .madel {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                color: #a8aab0;
+              }
+              .step {
+                align-items: center;
+                display: flex;
+                margin-top: 30px;
+                .q-rating {
+                  width: 165px;
+                }
+                span {
+                  margin-right: 30px;
+                }
+              }
+              .link {
+                margin-top: 40px;
+                .btn {
+                  color: #1084fa;
+                }
+              }
+            }
           }
         }
         .carousel__slide--visible > .carousel__item {
@@ -370,17 +504,26 @@ export default defineComponent({
           .card {
             background-color: rgb(150, 146, 146);
             width: 520px;
+            .img {
+              width: 10px;
+            }
+            .images {
+              width: 0px;
+            }
+            .model {
+              width: 200px;
+            }
           }
         }
         .carousel__slide--next > .carousel__item {
-          transform: scale(0.6) translate(-450px);
+          transform: scale(0.6) translate(-420px);
           z-index: 0;
           .card {
             background-color: rgb(150, 146, 146);
           }
         }
         .carousel__slide--prev > .carousel__item {
-          transform: scale(0.6) translate(450px);
+          transform: scale(0.6) translate(420px);
           z-index: 0;
           .card {
             background-color: rgb(150, 146, 146);
@@ -392,6 +535,38 @@ export default defineComponent({
           .card {
             width: 820px;
             background: #f7f7f7;
+            .img {
+              width: 261px;
+              height: 261px;
+              background: #ffffff;
+              border: 0.5px solid #f2f2f2;
+              box-sizing: border-box;
+              border-radius: 10px;
+            }
+            .images {
+              .col {
+                margin-bottom: 12px;
+                display: flex;
+                .img1 {
+                  width: 144px;
+                  height: 120px;
+                  background: #ffffff;
+                  margin-left: 12px;
+                  border: 0.5px solid #f2f2f2;
+                  box-sizing: border-box;
+                  border-radius: 10px;
+                }
+              }
+            }
+            .model {
+              width: 33%;
+              .logo {
+                width: 74px;
+                height: 74px;
+                border-radius: 10px;
+                background-color: #fff;
+              }
+            }
           }
         }
       }
@@ -405,6 +580,9 @@ export default defineComponent({
   background: #ffffff;
   box-shadow: 0px 2.66667px 10.6667px rgba(0, 0, 0, 0.05);
   color: #000;
+  width: 56px;
+  height: 56px;
+  margin-top: -20px;
 }
 .carousel__prev {
   margin-left: -50px;
